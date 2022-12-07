@@ -49,8 +49,6 @@ temp = Process[0]
 Process[0] = tag
 Process[index] = temp
 
-print(Process)
-
 #Xử lí Process
 for i in range(0, sum(BurstTime)):
 	l = [j for j in Process  if j[1] <= i]
@@ -67,6 +65,8 @@ for i in list:
     finishTime[i[0][2]] = i[1] 
     StartTime[i[0][2]] = i[0][3]
 
+StartTime[index] = 0
+
 #Tính toán 
 for i in range(len(finishTime)):    
 	turnTime[i] = finishTime[i] - ArrivalTime[i]    
@@ -77,7 +77,7 @@ for i in range(len(finishTime)):
 print("\n")
 print('ID\tBurstTime\tArrivalTime\tStartTime\tFinishTime\tResponseTime\tTurnTime\tWaitTime')
 for i in range(len(finishTime)):   
-	print("{}\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\n".format(i, BurstTime[i], ArrivalTime[i],StartTime[i], finishTime[i], resTime[i], turnTime[i], waitTime[i]))   
+	print("{}\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\t\t{}\n".format(i+1, BurstTime[i], ArrivalTime[i],StartTime[i], finishTime[i], resTime[i], turnTime[i], waitTime[i]))   
 print('Average Waiting Time = ', sum(waitTime)/len(waitTime))  
 print('Average Turnaround Time = ', round(sum(turnTime)/len(turnTime), 3))    
 print('Average Response Time = ', round(sum(resTime)/len(resTime), 3))
